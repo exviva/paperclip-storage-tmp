@@ -16,4 +16,5 @@ Gem::Specification.new do |gem|
 
   gem.add_runtime_dependency 'paperclip', '~> 2.0'
   gem.add_development_dependency 'rspec'
+  gem.add_development_dependency 'sqlite3'
 end

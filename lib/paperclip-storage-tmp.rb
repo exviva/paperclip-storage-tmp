@@ -1,8 +1,3 @@
-require "paperclip-storage-tmp/version"
-
-module Paperclip
-  module Storage
-    module Tmp
-    end
-  end
-end
+require 'paperclip-storage-tmp/version'
+require 'paperclip'
+require 'paperclip/storage/tmp'
