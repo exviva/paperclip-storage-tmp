@@ -79,10 +79,16 @@ The most important part is actually "rolling back the filesystem" after every te
 
     # in spec/spec_helper.rb
     RSpec.configure do |config|
-      config.after do
-        Paperclip::Storage::Tmp.clear
-      end
+      config.after { Paperclip::Storage::Tmp.clear }
     end
+
+Or, just use the provided one-line testing helpers for RSpec and Cucumber, which add the necessary after hooks for you:
+
+    # in spec/spec_helper.rb
+    require 'paperclip-storage-tmp/testing/rspec'
+
+    # in features/support/env.rb
+    require 'paperclip-storage-tmp/testing/cucumber'
 
 ## Caveats
 

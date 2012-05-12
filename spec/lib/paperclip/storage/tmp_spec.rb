@@ -1,9 +1,7 @@
 require 'spec_helper'
 
 describe Paperclip::Storage::Tmp do
-  after do
-    Paperclip::Storage::Tmp.clear
-  end
+  after { Paperclip::Storage::Tmp.clear }
 
   let(:avatar_file) { File.new('spec/fixtures/hey_mom_its_me.png') }
 
