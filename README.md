@@ -1,5 +1,7 @@
 # paperclip-storage-tmp
 
+[![Build Status](https://secure.travis-ci.org/exviva/paperclip-storage-tmp.png?branch=master)](http://travis-ci.org/exviva/paperclip-storage-tmp)
+
 This gem allows you to configure Paperclip 2.x to use your temporary directory to store the attachments. The attachments are deleted as soon as your Ruby process exits, or whenever you ask the gem to delete them (e.g. after every test), ensuring isolated state for each test.
 
 Thanks to this gem your `public/system` directory is no longer cluttered with attachments dangling in there after your test suite has finished running.
