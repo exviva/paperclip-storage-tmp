@@ -1,4 +1,4 @@
-## Not released yet:
+## 0.0.2 (2012-05-12):
 
 * Provide one-line testing helpers for RSpec and Cucumber;
   they require the gem and add after hooks which clear the
