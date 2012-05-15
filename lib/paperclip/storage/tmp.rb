@@ -7,7 +7,7 @@ module Paperclip
 
       # Deletes the temporary files and releases references to them
       def self.clear
-        fs.each_value {|f| f.unlink }
+        fs.each_value {|f| f.close! }
         @fs = nil
       end
 
@@ -31,7 +31,7 @@ module Paperclip
       def flush_deletes
         @queued_for_delete.each do |path|
           if file = Tmp.fs.delete(path)
-            file.unlink
+            file.close!
           end
         end
 

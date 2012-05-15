@@ -1,3 +1,8 @@
+## Not released yet:
+
+* Unlink the file **and** close the file descriptor when clearing
+  the attachments
+
 ## 0.0.3 (2012-05-15):
 
 * Depend on Paperclip `>= 2.4.2`, which properly handles
