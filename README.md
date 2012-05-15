@@ -30,7 +30,7 @@ Just like you wouldn't want to use the same database in development and test, yo
 
 ## Compatibility with Paperclip versions
 
-Please note that this gem has been written with Paperclip 2.x in mind (extracted from and battle-tested in an application dependent on Paperclip 2.4.0). The gemspec declares a rather loose dependency on Paperclip of '~> 2.0', so make sure the gem is behaving as expected. Since it's supposed to be used only in test environment, it shouldn't be harmful to just give it a try. If you confirm that it's working for the version of Paperclip you're using, let me know.
+Please note that this gem has been written with Paperclip 2.x in mind (extracted from and battle-tested in an application dependent on Paperclip 2.4.0, then upgraded to 2.7.0). The gemspec declares a rather loose dependency on Paperclip of '~> 2.4', '>= 2.4.2', so make sure the gem is behaving as expected. Since it's supposed to be used only in test environment, it shouldn't be harmful to just give it a try. If you confirm that it's working for the version of Paperclip you're using, let me know.
 
 Any pull requests increasing compatibility with other versions welcome!
 
@@ -94,11 +94,9 @@ Or, just use the provided one-line testing helpers for RSpec and Cucumber, which
 
 ## Caveats
 
-Beware that the file name assigned to the model attribute (`<attachment>_file_name`) is different than the name of the assigned/uploaded file (it's the name of the temporary file - a unique string).
+Beware that Paperclip doesn't know that the file doesn't physically exist in `public/system`, so you can't use `Attachment#path` to access the physical file. You can use `attachment.to_file.path` to find the actual location of the attachment on disk.
 
-Also, Paperclip doesn't know that the file doesn't physically exist in `public/system`, so you can't use `Attachment#path` to access the physical file. You can use `attachment.to_file.path` to find the actual location of the attachment on disk.
-
-Here are a couple of specs, which expose the expected behaviour of this gem. The specs markes with `# FAIL` expose the caveats:
+Here are a couple of specs, which expose the expected behaviour of this gem. The spec markes with `# FAIL` exposes the caveat:
 
     describe User do
       describe 'avatar' do
@@ -143,10 +141,9 @@ Here are a couple of specs, which expose the expected behaviour of this gem. The
           new_user.reload.avatar_file_name.should eq('hey_mom_its_me.png')
         end
 
-        # :(
-        it 'cannot handle assignment from Paperclip::Attachment' do
+        it 'can handle assignment from Paperclip::Attachment' do
           new_user = User.new(avatar: subject)
-          new_user.avatar_file_name.should_not eq('hey_mom_its_me.png') # FAIL
+          new_user.avatar_file_name.should eq('hey_mom_its_me.png')
         end
       end
     end

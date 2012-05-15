@@ -48,10 +48,9 @@ describe Paperclip::Storage::Tmp do
         new_user.reload.avatar_file_name.should eq('hey_mom_its_me.png')
       end
 
-      # :(
-      it 'cannot handle assignment from Paperclip::Attachment' do
+      it 'can handle assignment from Paperclip::Attachment' do
         new_user = User.new(avatar: subject)
-        new_user.avatar_file_name.should_not eq('hey_mom_its_me.png')
+        new_user.avatar_file_name.should eq('hey_mom_its_me.png')
       end
     end
 

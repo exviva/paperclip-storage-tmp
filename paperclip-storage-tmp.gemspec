@@ -14,7 +14,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ['lib']
   gem.version       = Paperclip::Storage::Tmp::VERSION
 
-  gem.add_runtime_dependency 'paperclip', '~> 2.0'
+  gem.add_runtime_dependency 'paperclip', '>= 2.4.2', '~> 2.4'
   gem.add_development_dependency 'rake'
   gem.add_development_dependency 'rspec'
   gem.add_development_dependency 'sqlite3'

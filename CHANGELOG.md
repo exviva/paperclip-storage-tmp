@@ -1,3 +1,8 @@
+## Not released yet:
+
+* Depend on Paperclip `>= 2.4.2`, which properly handles
+  `<attachment>_file_name` assignment from `Paperclip::Attachment`
+
 ## 0.0.2 (2012-05-12):
 
 * Provide one-line testing helpers for RSpec and Cucumber;
