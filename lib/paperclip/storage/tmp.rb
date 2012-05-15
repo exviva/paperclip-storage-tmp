@@ -16,7 +16,12 @@ module Paperclip
       end
 
       def to_file(style_name = default_style)
-        @queued_for_write[style_name] || (File.new(Tmp.fs[path(style_name)], 'rb') if exists?(style_name))
+        if @queued_for_write[style_name]
+          @queued_for_write[style_name].rewind
+          @queued_for_write[style_name]
+        elsif exists?(style_name)
+          File.new(Tmp.fs[path(style_name)], 'rb')
+        end
       end
 
       def flush_writes

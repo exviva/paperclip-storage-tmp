@@ -1,5 +1,6 @@
 ## Not released yet:
 
+* Rewind the file queued for write before returning it
 * Unlink the file **and** close the file descriptor when clearing
   the attachments
 
