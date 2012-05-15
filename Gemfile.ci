@@ -2,4 +2,4 @@ source 'https://rubygems.org'
 
 gemspec
 
-gem 'paperclip', '2.4.0'
+gem 'paperclip', '2.4.2'
