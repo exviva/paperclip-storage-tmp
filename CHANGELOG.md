@@ -1,4 +1,4 @@
-## Not released yet:
+## 0.0.3 (2012-05-15):
 
 * Depend on Paperclip `>= 2.4.2`, which properly handles
   `<attachment>_file_name` assignment from `Paperclip::Attachment`
