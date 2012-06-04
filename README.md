@@ -100,7 +100,8 @@ Here are a couple of specs, which expose the expected behaviour of this gem. The
 
     describe User do
       describe 'avatar' do
-        let(:user) { User.create!(avatar: File.new('spec/fixtures/hey_mom_its_me.png')) }
+        let(:avatar_file) { File.new('spec/fixtures/hey_mom_its_me.png') }
+        let(:user) { User.create!(avatar: avatar_file) }
         subject { user.avatar }
 
         it { should exist }
