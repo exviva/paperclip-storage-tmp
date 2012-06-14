@@ -7,7 +7,7 @@ describe Paperclip::Storage::Tmp do
 
   [proc { user.avatar }, proc { user.reload.avatar }].each do |subject_proc|
     describe 'assigning an attachment' do
-      let(:user) { User.create!(avatar: avatar_file) }
+      let(:user) { User.create!(:avatar => avatar_file) }
       subject(&subject_proc)
 
       it { should exist }
@@ -23,7 +23,7 @@ describe Paperclip::Storage::Tmp do
       end
 
       it 'copies the assigned file' do
-        File.read(subject.to_file).should eq(File.read(avatar_file))
+        File.read(subject.to_file.path).should eq(File.read(avatar_file.path))
       end
 
       it 'stores the file in an imagemagick-friendly way' do
@@ -39,17 +39,17 @@ describe Paperclip::Storage::Tmp do
       end
 
       it 'can handle assignment from File' do
-        new_user = User.new(avatar: avatar_file)
+        new_user = User.new(:avatar => avatar_file)
         new_user.avatar_file_name.should eq('hey_mom_its_me.png')
       end
 
       it 'can persist assignment from File' do
-        new_user = User.create!(avatar: avatar_file)
+        new_user = User.create!(:avatar => avatar_file)
         new_user.reload.avatar_file_name.should eq('hey_mom_its_me.png')
       end
 
       it 'can handle assignment from Paperclip::Attachment' do
-        new_user = User.new(avatar: subject)
+        new_user = User.new(:avatar => subject)
         new_user.avatar_file_name.should eq('hey_mom_its_me.png')
       end
     end
@@ -67,7 +67,7 @@ describe Paperclip::Storage::Tmp do
   end
 
   describe 'destroying an attachment' do
-    let(:user) { User.create!(avatar: avatar_file) }
+    let(:user) { User.create!(:avatar => avatar_file) }
     subject do
       @path_before_destroy = user.avatar.to_file.path
       user.destroy
@@ -84,7 +84,7 @@ describe Paperclip::Storage::Tmp do
   end
 
   describe 'clear' do
-    let(:user) { User.create!(avatar: avatar_file) }
+    let(:user) { User.create!(:avatar => avatar_file) }
     subject { Paperclip::Storage::Tmp.clear }
 
     it 'deletes files' do
