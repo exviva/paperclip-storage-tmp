@@ -1,5 +1,9 @@
 ## Not released yet:
 
+* (no changes)
+
+## 0.0.4 (2012-06-15):
+
 * Ruby 1.8 compatability: use `Tempfile#path` when opening new file
   instead passing `Tempfile` directly (mikz)
 * Rewind the file queued for write before returning it (exviva)
