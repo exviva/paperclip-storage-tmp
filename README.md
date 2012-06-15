@@ -96,7 +96,7 @@ Or, just use the provided one-line testing helpers for RSpec and Cucumber, which
 
 Beware that Paperclip doesn't know that the file doesn't physically exist in `public/system`, so you can't use `Attachment#path` to access the physical file. You can use `attachment.to_file.path` to find the actual location of the attachment on disk.
 
-Here are a couple of specs, which expose the expected behaviour of this gem. The spec markes with `# FAIL` exposes the caveat:
+Here are a couple of specs, which expose the expected behaviour of this gem. The spec marked with `# FAIL` exposes the caveat:
 
     describe User do
       describe 'avatar' do
