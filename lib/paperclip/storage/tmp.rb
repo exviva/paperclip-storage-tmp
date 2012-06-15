@@ -20,7 +20,7 @@ module Paperclip
           @queued_for_write[style_name].rewind
           @queued_for_write[style_name]
         elsif exists?(style_name)
-          File.new(Tmp.fs[path(style_name)], 'rb')
+          File.new(Tmp.fs[path(style_name)].path, 'rb')
         end
       end
 
