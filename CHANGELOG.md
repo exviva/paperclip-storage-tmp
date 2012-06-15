@@ -1,5 +1,7 @@
 ## Not released yet:
 
+* Ruby 1.8 compatability: use `Tempfile#path` when opening new file
+  instead passing `Tempfile` directly.
 * Rewind the file queued for write before returning it
 * Unlink the file **and** close the file descriptor when clearing
   the attachments
